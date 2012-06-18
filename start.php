@@ -3,7 +3,7 @@
  *	Elgg Ajax Comments
  *	Author : Raez Mon | Team Webgalli
  *	Team Webgalli | Elgg developers and consultants
- *	Mail : info@webgalli.com
+ *	Mail : info [at] webgalli [dot] com
  *	Web	: http://webgalli.com
  *	Skype : 'team.webgalli'
  *	@package Elgg Ajax Comments
