@@ -20,11 +20,24 @@ elgg.galliComments.submit = function(e) {
 		data: data,
 		success: function(json) {
 			var ul = $('ul.elgg-list-annotation');
-			if (ul.length < 1) {
-				form.parent().prepend(json.output);
-			} else {
-				ul.append($(json.output).find('li:first'));
-			};
+			
+			// allow plugins to prepend comment when annotations are ordered by 'time_created desc' || Or perform own action
+			var orderBy = elgg.trigger_hook('getOptions', 'galliComments.submit', json.output, 'asc');
+		
+			if (orderBy ==  'asc') {
+				if (ul.length < 1) {
+					form.parent().prepend(json.output);
+				} else {
+					ul.append($(json.output).find('li:first'));
+				}
+			} else if (orderBy == 'desc') {
+				if (ul.length < 1) {
+					form.parent().append(json.output);
+				} else {
+					ul.prepend($(json.output).find('li:first'));
+				}
+			} // else if other than 'asc' or 'desc' lets plugin perform own action
+			
 			if (is_tinyMCE_active) {
 				tinyMCE.activeEditor.setContent(''); 
 			} else {	
