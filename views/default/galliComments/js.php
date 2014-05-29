@@ -2,7 +2,7 @@
 elgg.provide('elgg.galliComments');
 
 elgg.galliComments.init = function() {
-	var form = $('.elgg-form-comments-add');
+	var form = $('.elgg-form-comment-save');
 	form.find('input[type=submit]').live('click', elgg.galliComments.submit);	
 };
 
@@ -21,7 +21,7 @@ elgg.galliComments.submit = function(e) {
 		data: data,
 		success: function(json) {
 			if(!riverId){		
-				var ul = $('ul.elgg-list-annotation');
+				var ul = $('.elgg-comments > ul.elgg-list');
 				// allow plugins to prepend comment when annotations are ordered by 'time_created desc' || Or perform own action 
 				// Thanks to Manutopik(https://github.com/ManUtopiK) for the hook 
 				var orderBy = elgg.trigger_hook('getOptions', 'galliComments.submit', json.output, 'asc');
@@ -29,13 +29,13 @@ elgg.galliComments.submit = function(e) {
 					if (ul.length < 1) {
 						form.parent().prepend(json.output);
 					} else {
-						ul.append($(json.output).find('li:first'));
+						ul.append($(json.output));
 					}
 				} else if (orderBy == 'desc') {
 					if (ul.length < 1) {
 						form.parent().append(json.output);
 					} else {
-						ul.prepend($(json.output).find('li:first'));
+						ul.prepend($(json.output));
 					}
 				} // else if other than 'asc' or 'desc' lets plugin perform own action
 				if (is_tinyMCE_active) {
@@ -52,7 +52,7 @@ elgg.galliComments.submit = function(e) {
 					success: function(htmlData) {
 						if (htmlData.length > 0) {
 							riverLi.empty();
-							riverLi.html($(htmlData).find('li:first'));
+							riverLi.html($(htmlData));
 						}
 					}
 				});
