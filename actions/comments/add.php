@@ -5,7 +5,6 @@
  * @package Elgg.Core
  * @subpackage Comments
  */
-
 $entity_guid = (int) get_input('entity_guid');
 $comment_guid = (int) get_input('comment_guid');
 $comment_text = get_input('generic_comment');
@@ -84,15 +83,16 @@ if ($comment_guid) {
 		'object_guid' => $guid,
 		'target_guid' => $entity_guid,
 	));
-	
-	$comment_guid = $comment->getGUID();
-	
+
+	$comment_guid = $comment->guid;
+
 	system_message(elgg_echo('generic_comment:posted'));
 }
-
+	error_log('comment guid 1 = ' . $comment_guid);
 if($comment_guid){
+	error_log('comment guid 2 = ' . $comment_guid);
 	$comment = get_entity($comment_guid);
 	echo elgg_view_entity($comment, array('full_view' => true));
-}	
+}
 // Forward back to the page where the action occurred
 forward(REFERER);
