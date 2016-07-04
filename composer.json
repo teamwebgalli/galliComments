@@ -1,0 +1,21 @@
+{
+    "name": "elgg/galliComments",
+    "type": "elgg-plugin",
+    "description": "Provides a Ajax comment system that may be include automatically for any entities, based on subtypes, that follow some specific elgg patterns that comes from the elgg_view_entity() function",
+    "homepage": "https://github.com/Twizanex/galliComments",
+    "keywords": ["elgg", "plugin", "galliComments"],
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Tom Ondiba",
+            "name": "Galli Team"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/Twizanex/galliComments"
+    },
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": ">=1.0.8"
+    }
+}
