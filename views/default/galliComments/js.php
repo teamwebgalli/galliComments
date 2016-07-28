@@ -20,7 +20,7 @@ elgg.galliComments.submit = function(e) {
 	var data = form.serialize();
 	var ul_comments = $('.elgg-comments > ul.elgg-list, .elgg-comments > .elgg-list-container > ul.elgg-list');
 	var ul_replies = $('#group-replies > ul.elgg-list, #group-replies > .elgg-list-container > ul.elgg-list');
-	if (ul_replies)
+	if ($('#group-replies').length > 0)
 	{
 		var ul = ul_replies;
 		var function_to_call = 'galliComments/reply';
